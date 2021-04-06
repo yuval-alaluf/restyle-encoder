@@ -1,0 +1,451 @@
+
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>ReStyle Encoder</title>
+    
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+              integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="images/thumbnail.jpg"
+              rel="shortcut icon" type="image/x-icon"/>
+
+        <script type="text/javascript" src="jquery.mlens-1.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+
+        <style>
+            body {
+                font-family: 'Open-Sans', sans-serif;
+                font-weight: 300;
+                background-color: #fff;
+            }
+    
+            .content {
+                width: 1000px;
+                padding: 25px 50px;
+                margin: 25px auto;
+                background-color: white;
+                box-shadow: 0px 0px 10px #999;
+                border-radius: 15px;
+            }
+    
+            .contentblock {
+                width: 950px;
+                margin: 0 auto;
+                padding: 0;
+                border-spacing: 25px 0;
+            }
+    
+            .contentblock td {
+                background-color: #fff;
+                padding: 25px 50px;
+                vertical-align: top;
+                box-shadow: 0px 0px 10px #999;
+                border-radius: 15px;
+            }
+    
+            a,
+            a:visited {
+                color: #224b8d;
+                font-weight: 300;
+            }
+    
+            #authors {
+                text-align: center;
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+    
+            #conference {
+                text-align: center;
+                margin-bottom: 20px;
+                font-style: italic;
+            }
+    
+            #authors a {
+                margin: 0 20px;
+            }
+    
+            h1 {
+                text-align: center;
+                font-size: 35px;
+                font-weight: 300;
+            }
+    
+            h2 {
+                font-size: 30px;
+                font-weight: 300;
+            }
+    
+            code {
+                display: block;
+                padding: 10px;
+                margin: 10px 10px;
+            }
+    
+            p {
+                line-height: 25px;
+                text-align: justify;
+            }
+    
+            p code {
+                display: inline;
+                padding: 0;
+                margin: 0;
+            }
+    
+            #teasers {
+                margin: 0 auto;
+            }
+    
+            #teasers td {
+                margin: 0 auto;
+                text-align: center;
+                padding: 5px;
+            }
+    
+            #teasers img {
+                width: 250px;
+            }
+    
+            #results img {
+                width: 133px;
+            }
+    
+            #seeintodark {
+                margin: 0 auto;
+            }
+    
+            #sift {
+                margin: 0 auto;
+            }
+    
+            #sift img {
+                width: 250px;
+            }
+    
+            .downloadpaper {
+                padding-left: 20px;
+                float: right;
+                text-align: center;
+            }
+    
+            .downloadpaper a {
+                font-weight: bold;
+                text-align: center;
+            }
+    
+            #demoframe {
+                border: 0;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                height: 340px;
+            }
+    
+            #feedbackform {
+                border: 1px solid #ccc;
+                margin: 0 auto;
+                border-radius: 15px;
+            }
+    
+            #eyeglass {
+                height: 530px;
+            }
+    
+            #eyeglass #wrapper {
+                position: relative;
+                height: auto;
+                margin: 0 auto;
+                float: left;
+                width: 800px;
+            }
+    
+            #mitnews {
+                font-weight: normal;
+                margin-top: 20px;
+                font-size: 14px;
+                width: 220px;
+            }
+    
+            #mitnews a {
+                font-weight: normal;
+            }
+    
+            .teaser-img {
+                width: 80%;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+            }
+            .teaser-gif {
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+            }
+            .summary-img {
+                width: 100%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .small-img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+    
+            .iframe {
+                width: 100%;
+                height: 125%
+            }
+
+            /* Three image containers (use 25% for four, and 50% for two, etc) */
+            .column {
+                float: center;
+                padding: 5px;
+            }
+
+            /* Clear floats after image containers */
+            .row::after {
+            content: "";
+            clear: both;
+            display: table;
+            }
+    
+          .container {
+            display: flex;
+            align-items: center;
+            justify-content: center
+          }
+          .image {
+            flex-basis: 40%
+          }
+          .text {
+            font-size: 20px;
+            padding-left: 20px;
+          }
+    
+        </style>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+            <!--
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-98008272-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+    
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-98008272-2');
+        </script>
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+        </script>
+            -->
+    
+    </head>
+    
+    <body>
+    
+        <div class="content">
+                <h1>ReStyle: A Residual-Based StyleGAN Encoder via <br> Iterative Refinement</h1>
+                <br>
+            <p id="authors" style="margin-left: 4%;font-size:17.5pt">
+                <a href="https://yuval-alaluf.github.io/">Yuval Alaluf</a>
+                <a href="https://orpatashnik.github.io/">Or Patashnik</a>
+                <a href="https://www.cs.tau.ac.il/~dcor/">Daniel Cohen-Or</a><br>
+            </p>
+            <p style="margin-left: 40%; font-size:17.5pt">
+                Tel-Aviv University
+            </p>
+            <br>
+
+            <p id="authors">
+                <a href=""><i class="far fa-3x fa-file text-primary mb-3"></i></a>
+                <a href="https://github.com/yuval-alaluf/restyle-encoder"><i class="fab fa-3x fa-github text-primary mb-3"></i></a>
+                <a href=""><i class="fas fa-code fa-3x text-primary mb-3"></i></a>
+                <a href="bibtex.txt"><i class="fas fa-asterisk fa-3x text-primary mb-3 "></i></a>
+                <br>
+            </p>
+
+            <p>
+                <strong style="color:#18446c;margin-left:31.25%" class="icon-bold-text">Paper</strong>
+                <strong style="color:#18446c;margin-left:5%" class="icon-bold-text">Code</strong>
+                <strong style="color:#18446c;margin-left:6.5%" class="icon-bold-text">Colab</strong>
+                <strong style="color:#18446c;margin-left:6%" class="icon-bold-text">Bibtex</strong>
+            </p>
+
+
+            <p>
+                <img class='teaser-img' src='images/teaser.jpg'></img>
+            </p>
+    
+                <p><strong>Abstract: </strong>
+                    Recently, the power of unconditional image synthesis has significantly advanced through the use of Generative Adversarial Networks (GANs). The task of inverting an image into its corresponding latent code of the trained GAN is of utmost importance as it allows for the manipulation of real images, leveraging the rich semantics learned by the network. Recognizing the limitations of current inversion approaches, in this work we present a novel inversion scheme that extends current encoder-based inversion methods by introducing an iterative refinement mechanism. Instead of directly predicting the latent code of a given image using a single pass, the encoder is tasked with predicting a residual with respect to the current estimate of the inverted latent code in a self-correcting manner. Our residual-based encoder, named ReStyle, attains improved accuracy compared to current state-of-the-art encoder-based methods with a negligible increase in inference time. We analyze the behavior of ReStyle to gain valuable insights into its iterative nature. We then evaluate the performance of our residual encoder and analyze its robustness compared to optimization-based inversion and state-of-the-art encoders.                    
+                </p>
+    
+            <br clear="all">
+        </div>
+        <div class="content" id="samples">
+    
+            <h2 style="text-align:center;">Overview</h2>
+    
+                    <div class="container">
+                        <div class="text" style="text-align: center;">
+                            <p>Our ReStyle scheme leverages the progress of recent StyleGAN encoders for inverting real images and introduces an iterative refinement mechansim that gradually converges to a more accurate inversion of real images in a self-correcting manner.
+                        </div>
+                    </div>
+            <br>
+            <hr>
+            <p style="text-align: center;">
+                ReStyle inverts real images using multiple of forward passes by iteratively feeding the encoder with the output of the previous 
+                step along with the original input. Our encoders learn to predict a <b>residual</b> between the current inverted latent and the new latent at each step. 
+                <br>
+                Notably, during inference, ReStyle converges its inversion after a small number of steps (e.g., &#60; 5), taking less than 0.5 seconds per image. 
+                This is compared to several minutes per image when inverting using optimization techniques.
+
+            </p>
+
+            <figure class="half" style="display:flex;text-align:center; display: block; margin-left:auto; margin-right: auto">
+                <img style="width:15%" src="images/2624_input.jpg">
+                <img style="width:75%; margin-left: 1%;" src="images/2624_steps.jpg">
+            </figure>
+            <figure class="half" style="display:flex;text-align:center; display: block; margin-left:auto; margin-right: auto">
+                <img style="width:15%" src="images/00126_input.jpg">
+                <img style="width:75%; margin-left: 1%;" src="images/00126_steps.jpg">
+            </figure>
+            <figure class="half" style="display:flex;text-align:center; display: block; margin-left:auto; margin-right: auto">
+                <img style="width:15%" src="images/1855363922cd7583f9ff4c0e9c4ce9867b06de9c_input.jpeg">
+                <img style="width:75%; margin-left: 1%;" src="images/1855363922cd7583f9ff4c0e9c4ce9867b06de9c_steps.jpeg">
+                <figcaption style="text-align: left;padding-left:6em">
+                    Input &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp; &thinsp;
+                    Iterative Outputs &#8594;
+                </figcaption>
+            </figure>
+
+            <hr>
+            <p style="text-align: center;">
+                Our ReStyle encoder operates in a coarse-to-fine manner, beginning by concentrating on low-frequency details which are then gradually complemented by adjusting high frequency, fine-level details. 
+                Here, we show the iterative outputs of ReStyle from left to right along with heatmaps showing the magnitude of change incurred at each inference step.
+            </p>
+            <img class="small-img" width="75%" src='images/1914_restyle.jpg'></img>
+            <img class="small-img" width="75%" src='images/1914_heatmap.jpg'></img>
+            <br>
+            <img class="small-img" width="75%" src='images/00030_restyle.jpg'></img>
+            <img class="small-img" width="75%" src='images/00030_heatmap.jpg'></img>
+            <br>
+
+            <br>
+            <hr>
+            <p style="text-align: center;">
+                We demonstrate that applying ReStyle over the recent e4e encoder leads to editable latents, allowing one to perform latent space manipulations while still achieving an accurate reconstruction.
+                Below we show several examples of age and smile edits on real images.
+            </p>
+            <img class='summary-img' style="width:100%;" src='images/restyle_edits.jpg'></img>
+            <br>
+            <hr>
+            <p style="text-align: center;">To show the generalization of our approach beyond the StyleGAN inversion task, we introduce an encoder bootstrapping technique that leverages two trained ReStyle encoders for solving the image toonification task.</p>
+            <span class="center" style="text-align: center;">
+                <video onloadeddata="this.play();" poster="poster.png" width="100%" playsinline loop muted controls>
+                    <source src="images/toonify_gif.mp4" type="video/mp4" />
+                    <source src="images/toonify_gif.mp4.webm" type="video/webm" />
+                    <source src="images/toonify_gif.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+            </span>
+                
+        </div>      
+
+        <div class="content" id="references">
+    
+            <h2 style="text-align:center;">Results</h2>
+
+            <p> Below we show animations illustrating real images on the left with their encoded representations on the right. All results are shown at their full resolution. </p>
+
+            <h3>Human Faces</h3>
+
+            <span class="center" style="text-align: center;">
+                <video onloadeddata="this.play();" poster="poster.png" width="100%" playsinline loop muted controls>
+                    <source src="images/human_faces.mp4" type="video/mp4" />
+                    <source src="images/human_faces.mp4.webm" type="video/webm" />
+                    <source src="images/human_faces.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+                <br>
+                <br>
+            </span>
+
+            <h3>Cars</h3>
+
+            <span class="center" style="text-align: center;">
+                <video onloadeddata="this.play();" poster="poster.png" width="100%" playsinline loop muted controls>
+                    <source src="images/cars.mp4" type="video/mp4" />
+                    <source src="images/cars.mp4.webm" type="video/webm" />
+                    <source src="images/cars.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+                <br>
+                <br>
+            </span>
+
+            <h3>Wild Animal Faces</h3>
+
+            <span class="center" style="text-align: center;">
+                <video onloadeddata="this.play();" poster="poster.png" width="100%" playsinline loop muted controls>
+                    <source src="images/afhq_wild.mp4" type="video/mp4" />
+                    <source src="images/afhq_wild.mp4.webm" type="video/webm" />
+                    <source src="images/afhq_wild.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+                <br>
+                <br>
+            </span>
+
+            <h3>Churches</h3>
+
+            <span class="center" style="text-align: center;">
+                <video onloadeddata="this.play();" poster="poster.png" width="100%" playsinline loop muted controls>
+                    <source src="images/churches.mp4" type="video/mp4" />
+                    <source src="images/churches.mp4.webm" type="video/webm" />
+                    <source src="images/churches.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+                <br>
+                <br>
+            </span>
+
+            <h3>Horses</h3>
+
+            <span class="center" style="text-align: center;">
+                <video onloadeddata="this.play();" poster="poster.png" width="100%" playsinline loop muted controls>
+                    <source src="images/horses.mp4" type="video/mp4" />
+                    <source src="images/horses.mp4.webm" type="video/webm" />
+                    <source src="images/horses.mp4.ogg" type="video/ogg" />
+                    Your browser does not support the video tag or the file format of this video.
+                </video>
+                <br>
+                <br>
+            </span>
+
+        </div>      
+
+        <div class="content" id="references">
+    
+            <h2>Reference</h2>
+        
+            <code>
+                
+            </code>
+        </div>      
+
+        <div class="content" id="references">
+            Website template is adopted from <a href="http://people.csail.mit.edu/lrchai/">Lucy Chai.</a>
+        </div>      
+
+    </body>
+    
+    </html>
+    
