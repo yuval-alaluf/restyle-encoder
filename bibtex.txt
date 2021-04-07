@@ -1,5 +1,5 @@
 @misc{alaluf2021restyle,
-      title={ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement}, 
+      title={ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement},
       author={Yuval Alaluf and Or Patashnik and Daniel Cohen-Or},
       year={2021},
       eprint={2104.02699},
