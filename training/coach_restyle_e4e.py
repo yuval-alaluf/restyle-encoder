@@ -27,7 +27,7 @@ class Coach:
 
 		self.global_step = 0
 
-		self.device = 'cuda:0'  # TODO: Allow multiple GPU? currently using CUDA_VISIBLE_DEVICES
+		self.device = 'cuda:0'
 		self.opts.device = self.device
 
 		# Initialize network
@@ -404,7 +404,8 @@ class Coach:
 			'opts': vars(self.opts),
 			'global_step': self.global_step,
 			'optimizer': self.optimizer.state_dict(),
-			'best_val_loss': self.best_val_loss
+			'best_val_loss': self.best_val_loss,
+			'latent_avg': self.net.latent_avg
 		}
 		if self.opts.w_discriminator_lambda > 0:
 			save_dict['discriminator_state_dict'] = self.discriminator.state_dict()

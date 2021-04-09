@@ -1,3 +1,9 @@
+# specify the encoder types for pSp and e4e - this is mainly used for the inference scripts
+ENCODER_TYPES = {
+    'pSp': ['GradualStyleEncoder', 'ResNetGradualStyleEncoder', 'BackboneEncoder', 'ResNetBackboneEncoder'],
+    'e4e': ['ProgressiveBackboneEncoder', 'ResNetProgressiveBackboneEncoder']
+}
+
 RESNET_MAPPING = {
     'layer1.0': 'body.0',
     'layer1.1': 'body.1',

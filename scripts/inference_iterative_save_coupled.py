@@ -13,10 +13,12 @@ sys.path.append("..")
 
 from configs import data_configs
 from datasets.inference_dataset import InferenceDataset
-from utils.common import tensor2im
-from utils.inference_utils import run_on_batch
 from options.test_options import TestOptions
 from models.psp import pSp
+from models.e4e import e4e
+from utils.model_utils import ENCODER_TYPES
+from utils.common import tensor2im
+from utils.inference_utils import run_on_batch
 
 
 def run():
@@ -31,7 +33,11 @@ def run():
     opts.update(vars(test_opts))
     opts = Namespace(**opts)
 
-    net = pSp(opts)
+    if opts.encoder_type in ENCODER_TYPES['pSp']:
+        net = pSp(opts)
+    else:
+        net = e4e(opts)
+
     net.eval()
     net.cuda()
 

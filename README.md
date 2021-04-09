@@ -46,10 +46,10 @@ Please download the pretrained models from the following links.
 ### ReStyle + e4e
 | Path | Description
 | :--- | :----------
-|FFHQ - ReStyle + e4e  | Coming Soon!
-|Stanford Cars - ReStyle + e4e  | Coming Soon!
-|LSUN Church - ReStyle + e4e  | Coming Soon!
-|AFHQ Wild - ReStyle + e4e  | Coming Soon!
+|[FFHQ - ReStyle + e4e](https://drive.google.com/file/d/1e2oXVeBPXMQoUoC_4TNwAWpOPpSEhE_e/view?usp=sharing)  | ReStyle applied over e4e trained on the [FFHQ](https://github.com/NVlabs/ffhq-dataset) dataset.
+|[Stanford Cars - ReStyle + e4e](https://drive.google.com/file/d/1v6Yi-Yne6JX0Pyas6XPS83IzKKUvCe8r/view?usp=sharing)  | ReStyle applied over e4e trained on the [Stanford Cars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) dataset.
+|[LSUN Church - ReStyle + e4e](https://drive.google.com/file/d/1sCRzbM1fGTgTbWO87jP_rxApw-tS0CH_/view?usp=sharing)  | ReStyle applied over e4e trained on the [LSUN](https://www.yf.io/p/lsun) Church dataset.
+|[AFHQ Wild - ReStyle + e4e](https://drive.google.com/file/d/1HQlUPKirShHyL3kGnwVRjhfcb-j9s4V3/view?usp=sharing)  | ReStyle applied over e4e trained on the [AFHQ Wild](https://github.com/clovaai/stargan-v2) dataset.
 |[LSUN Horse - ReStyle + e4e](https://drive.google.com/file/d/19_sUpTYtJmhSAolKLm3VgI-ptYqd-hgY/view?usp=sharing)  | ReStyle applied over e4e trained on the [LSUN](https://www.yf.io/p/lsun) Horse dataset.
 
 ### Auxiliary Models
@@ -250,22 +250,22 @@ These scripts receive the inference output directory and ground truth directory.
 - Calculating LPIPS loss:
 ```
 python scripts/calc_losses_on_images.py \
---mode lpips
+--mode lpips \
 --output_path=/path/to/experiment/inference_results \
---gt_path=/path/to/test_images \
+--gt_path=/path/to/test_images
 ```
 - Calculating L2 loss:
 ```
 python scripts/calc_losses_on_images.py \
---mode l2
+--mode l2 \
 --output_path=/path/to/experiment/inference_results \
---gt_path=/path/to/test_images \
+--gt_path=/path/to/test_images
 ```
 - Calculating the identity loss for the human facial domain: 
 ```
 python scripts/calc_id_loss_parallel.py \
 --output_path=/path/to/experiment/inference_results \
---gt_path=/path/to/test_images \
+--gt_path=/path/to/test_images
 ```
 
 These scripts will traverse through each sub-directory of `output_path` to compute the metrics on each step's output images.

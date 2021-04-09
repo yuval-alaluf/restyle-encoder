@@ -24,7 +24,7 @@ class Coach:
 
 		self.global_step = 0
 
-		self.device = 'cuda:0'  # TODO: Allow multiple GPU? currently using CUDA_VISIBLE_DEVICES
+		self.device = 'cuda:0'
 		self.opts.device = self.device
 
 		# Initialize network
@@ -312,9 +312,7 @@ class Coach:
 	def __get_save_dict(self):
 		save_dict = {
 			'state_dict': self.net.state_dict(),
-			'opts': vars(self.opts)
+			'opts': vars(self.opts),
+			'latent_avg': self.net.latent_avg
 		}
-		# save the latent avg in state_dict for inference if truncation of w was used during training
-		if self.opts.start_from_latent_avg:
-			save_dict['latent_avg'] = self.net.latent_avg
 		return save_dict

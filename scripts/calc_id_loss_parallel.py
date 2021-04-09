@@ -79,6 +79,8 @@ def parse_args():
 
 def run(args):
 	for step in sorted(os.listdir(args.output_path)):
+		if not step.isdigit():
+			continue
 		step_outputs_path = os.path.join(args.output_path, step)
 		if os.path.isdir(step_outputs_path):
 			print('#' * 80)

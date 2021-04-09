@@ -14,9 +14,12 @@ sys.path.append("..")
 
 from configs import data_configs
 from datasets.inference_dataset import InferenceDataset
-from utils.common import tensor2im
 from options.test_options import TestOptions
 from models.psp import pSp
+from models.e4e import e4e
+from utils.model_utils import ENCODER_TYPES
+from utils.common import tensor2im
+from utils.inference_utils import run_on_batch
 
 
 def run():
@@ -31,7 +34,10 @@ def run():
     opts.update(vars(test_opts))
     opts['checkpoint_path'] = test_opts.model_1_checkpoint_path
     opts = Namespace(**opts)
-    net1 = pSp(opts)
+    if opts.encoder_type in ENCODER_TYPES['pSp']:
+        net1 = pSp(opts)
+    else:
+        net1 = e4e(opts)
     net1.eval()
     net1.cuda()
 
@@ -40,7 +46,10 @@ def run():
     opts.update(vars(test_opts))
     opts['checkpoint_path'] = test_opts.model_2_checkpoint_path
     opts = Namespace(**opts)
-    net2 = pSp(opts)
+    if opts.encoder_type in ENCODER_TYPES['pSp']:
+        net2 = pSp(opts)
+    else:
+        net2 = e4e(opts)
     net2.eval()
     net2.cuda()
 
