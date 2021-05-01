@@ -105,7 +105,9 @@ If you wish to use your own generator trained using NVIDIA's implementation ther
 1. Using NVIDIA's StyleGAN2 / StyleGAN-ADA TensorFlow implementation.  
    You can then convert the TensorFlow `.pkl` checkpoints to the supported format using the conversion script found in [rosinality's implementation](https://github.com/rosinality/stylegan2-pytorch#convert-weight-from-official-checkpoints).
 2. Using NVIDIA's StyleGAN-ADA PyTorch implementation.  
-   You can then convert the PyTorch `.pkl` checkpoints to the supported format using the conversion script created by [Justin Pinkney](https://github.com/justinpinkney) found in [dvschultz's fork](https://github.com/dvschultz/stylegan2-ada-pytorch/blob/main/SG2_ADA_PT_to_Rosinality.ipynb).
+   You can then convert the PyTorch `.pkl` checkpoints to the supported format using the conversion script created by [Justin Pinkney](https://github.com/justinpinkney) found in [dvschultz's fork](https://github.com/dvschultz/stylegan2-ada-pytorch/blob/main/SG2_ADA_PT_to_Rosinality.ipynb).  
+      Please note that the conversion script does **not** save the average latent code that is needed for ReStyle. However, please see the following issue for details on the changes that can be made to save the average code: [converting stylegan-ada-pytorch to rosinality](https://github.com/yuval-alaluf/restyle-encoder/issues/1)
+
 
 Once you have the converted `.pt` files, you should be ready to use them in this repository.  
 
