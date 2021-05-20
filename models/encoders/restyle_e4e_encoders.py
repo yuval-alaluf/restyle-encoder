@@ -1,5 +1,4 @@
 from enum import Enum
-import math
 from torch import nn
 from torch.nn import Conv2d, BatchNorm2d, PReLU, Sequential, Module
 from torchvision.models import resnet34
