@@ -53,7 +53,7 @@ class pSp(nn.Module):
             self.__load_latent_avg(ckpt, repeat=self.n_styles)
 
     def forward(self, x, latent=None, resize=True, latent_mask=None, input_code=False, randomize_noise=True,
-                inject_latent=None, return_latents=False, alpha=None, average_code=False):
+                inject_latent=None, return_latents=False, alpha=None, average_code=False, input_is_full=False):
         if input_code:
             codes = x
         else:
@@ -79,7 +79,7 @@ class pSp(nn.Module):
         if average_code:
             input_is_latent = True
         else:
-            input_is_latent = not input_code
+            input_is_latent = (not input_code) or (input_is_full)
 
         images, result_latent = self.decoder([codes],
                                              input_is_latent=input_is_latent,

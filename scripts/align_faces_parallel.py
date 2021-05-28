@@ -50,7 +50,7 @@ def get_landmark(filepath, predictor):
     return lm
 
 
-def align_face(filepath, predictor):
+def align_face(filepath, predictor, output_size=256, transform_size=256):
     """
 	:param filepath: str
 	:return: PIL Image
@@ -89,9 +89,6 @@ def align_face(filepath, predictor):
 
     # read image
     img = PIL.Image.open(filepath)
-
-    output_size = 256
-    transform_size = 256
     enable_padding = True
 
     # Shrink.

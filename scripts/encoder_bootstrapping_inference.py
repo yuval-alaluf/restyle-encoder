@@ -19,7 +19,6 @@ from models.psp import pSp
 from models.e4e import e4e
 from utils.model_utils import ENCODER_TYPES
 from utils.common import tensor2im
-from utils.inference_utils import run_on_batch
 
 
 def run():
@@ -42,6 +41,7 @@ def run():
     net1.cuda()
 
     # load model used for translating input image after initialization
+    ckpt = torch.load(test_opts.model_2_checkpoint_path, map_location='cpu')
     opts = ckpt['opts']
     opts.update(vars(test_opts))
     opts['checkpoint_path'] = test_opts.model_2_checkpoint_path

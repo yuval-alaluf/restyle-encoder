@@ -3,8 +3,12 @@
 > Recently, the power of unconditional image synthesis has significantly advanced through the use of Generative Adversarial Networks (GANs). The task of inverting an image into its corresponding latent code of the trained GAN is of utmost importance as it allows for the manipulation of real images, leveraging the rich semantics learned by the network. Recognizing the limitations of current inversion approaches, in this work we present a novel inversion scheme that extends current encoder-based inversion methods by introducing an iterative refinement mechanism. Instead of directly predicting the latent code of a given image using a single pass, the encoder is tasked with predicting a residual with respect to the current estimate of the inverted latent code in a self-correcting manner. Our residual-based encoder, named ReStyle, attains improved accuracy compared to current state-of-the-art encoder-based methods with a negligible increase in inference time. We analyze the behavior of ReStyle to gain valuable insights into its iterative nature. We then evaluate the performance of our residual encoder and analyze its robustness compared to optimization-based inversion and state-of-the-art encoders.
 
 <a href="https://arxiv.org/abs/2104.02699"><img src="https://img.shields.io/badge/arXiv-2008.00951-b31b1b.svg"></a>
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-<a href="http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>  
+Inference Notebook: <a href="http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>  
+Animation Notebook: <a href="http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/animations_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>  
+
+Two Minute Papers Video: <a href="https://www.youtube.com/watch?v=9RzCZZBjlxM"><img src="https://img.shields.io/badge/-YouTube-red?&style=for-the-badge&logo=youtube&logoColor=white" height=20></a>  
+
 
 <p align="center">
 <img src="docs/teaser.jpg" width="800px"/>  
@@ -106,7 +110,6 @@ If you wish to use your own generator trained using NVIDIA's implementation ther
    You can then convert the TensorFlow `.pkl` checkpoints to the supported format using the conversion script found in [rosinality's implementation](https://github.com/rosinality/stylegan2-pytorch#convert-weight-from-official-checkpoints).
 2. Using NVIDIA's StyleGAN-ADA PyTorch implementation.  
    You can then convert the PyTorch `.pkl` checkpoints to the supported format using the conversion script created by [Justin Pinkney](https://github.com/justinpinkney) found in [dvschultz's fork](https://github.com/dvschultz/stylegan2-ada-pytorch/blob/main/SG2_ADA_PT_to_Rosinality.ipynb).  
-      Please note that the conversion script does **not** save the average latent code that is needed for ReStyle. However, please see the following issue for details on the changes that can be made to save the average code: [converting stylegan-ada-pytorch to rosinality](https://github.com/yuval-alaluf/restyle-encoder/issues/1)
 
 
 Once you have the converted `.pt` files, you should be ready to use them in this repository.  
@@ -186,11 +189,13 @@ python scripts/train_restyle_e4e.py \
 - You should also adjust the `--output_size` and `--stylegan_weights` flags according to your StyleGAN generator. 
 - See `options/train_options.py` and `options/e4e_train_options.py` for all training-specific flags. 
 
-## Inference Notebook
+## Inference Notebooks
 To help visualize the results of ReStyle we provide a Jupyter notebook found in `notebooks/inference_playground.ipynb`.   
 The notebook will download the pretrained models and run inference on the images found in `notebooks/images` or 
 on images of your choosing. It is recommended to run this in [Google Colab](http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/inference_playground.ipynb).
 
+We have also provided a notebook for generating interpolation videos such as those found in the project page. This 
+notebook can be run using Google Colab [here](http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/animations_playground.ipynb).
 
 ## Testing
 ### Inference
