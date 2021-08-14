@@ -1,8 +1,7 @@
-@misc{alaluf2021restyle,
-      title={ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement},
-      author={Yuval Alaluf and Or Patashnik and Daniel Cohen-Or},
-      year={2021},
-      eprint={2104.02699},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@InProceedings{alaluf2021restyle,
+      author = {Alaluf, Yuval and Patashnik, Or and Cohen-Or, Daniel},
+      title = {ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement}, 
+      month = {October},
+      booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},  
+      year = {2021}
 }
