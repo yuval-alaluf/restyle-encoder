@@ -1,4 +1,4 @@
-# ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement
+# ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement (ICCV 2021)
 
 > Recently, the power of unconditional image synthesis has significantly advanced through the use of Generative Adversarial Networks (GANs). The task of inverting an image into its corresponding latent code of the trained GAN is of utmost importance as it allows for the manipulation of real images, leveraging the rich semantics learned by the network. Recognizing the limitations of current inversion approaches, in this work we present a novel inversion scheme that extends current encoder-based inversion methods by introducing an iterative refinement mechanism. Instead of directly predicting the latent code of a given image using a single pass, the encoder is tasked with predicting a residual with respect to the current estimate of the inverted latent code in a self-correcting manner. Our residual-based encoder, named ReStyle, attains improved accuracy compared to current state-of-the-art encoder-based methods with a negligible increase in inference time. We analyze the behavior of ReStyle to gain valuable insights into its iterative nature. We then evaluate the performance of our residual encoder and analyze its robustness compared to optimization-based inversion and state-of-the-art encoders.
 
@@ -378,27 +378,27 @@ This code borrows heavily from [pixel2style2pixel](https://github.com/eladrich/p
 ## Citation
 If you use this code for your research, please cite the following works:
 ```
-@misc{alaluf2021restyle,
-      title={ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement}, 
-      author={Yuval Alaluf and Or Patashnik and Daniel Cohen-Or},
-      year={2021},
-      eprint={2104.02699},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@InProceedings{alaluf2021restyle,
+      author = {Alaluf, Yuval and Patashnik, Or and Cohen-Or, Daniel},
+      title = {ReStyle: A Residual-Based StyleGAN Encoder via Iterative Refinement}, 
+      month = {October},
+      booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},  
+      year = {2021}
 }
 ```
 ```
+@InProceedings{richardson2021encoding,
+      author = {Richardson, Elad and Alaluf, Yuval and Patashnik, Or and Nitzan, Yotam and Azar, Yaniv and Shapiro, Stav and Cohen-Or, Daniel},
+      title = {Encoding in Style: a StyleGAN Encoder for Image-to-Image Translation},
+      booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+      month = {June},
+      year = {2021}
+}
 @article{tov2021designing,
-  title={Designing an Encoder for StyleGAN Image Manipulation},
-  author={Tov, Omer and Alaluf, Yuval and Nitzan, Yotam and Patashnik, Or and Cohen-Or, Daniel},
-  journal={arXiv preprint arXiv:2102.02766},
-  year={2021}
-}
-@article{richardson2020encoding,
-  title={Encoding in Style: a StyleGAN Encoder for Image-to-Image Translation},
-  author={Richardson, Elad and Alaluf, Yuval and Patashnik, Or and Nitzan, Yotam and Azar, Yaniv and Shapiro, Stav and Cohen-Or, Daniel},
-  journal={arXiv preprint arXiv:2008.00951},
-  year={2020}
+      title={Designing an Encoder for StyleGAN Image Manipulation},
+      author={Tov, Omer and Alaluf, Yuval and Nitzan, Yotam and Patashnik, Or and Cohen-Or, Daniel},
+      journal={arXiv preprint arXiv:2102.02766},
+      year={2021}
 }
 ```
 
