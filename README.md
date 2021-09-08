@@ -2,12 +2,14 @@
 
 > Recently, the power of unconditional image synthesis has significantly advanced through the use of Generative Adversarial Networks (GANs). The task of inverting an image into its corresponding latent code of the trained GAN is of utmost importance as it allows for the manipulation of real images, leveraging the rich semantics learned by the network. Recognizing the limitations of current inversion approaches, in this work we present a novel inversion scheme that extends current encoder-based inversion methods by introducing an iterative refinement mechanism. Instead of directly predicting the latent code of a given image using a single pass, the encoder is tasked with predicting a residual with respect to the current estimate of the inverted latent code in a self-correcting manner. Our residual-based encoder, named ReStyle, attains improved accuracy compared to current state-of-the-art encoder-based methods with a negligible increase in inference time. We analyze the behavior of ReStyle to gain valuable insights into its iterative nature. We then evaluate the performance of our residual encoder and analyze its robustness compared to optimization-based inversion and state-of-the-art encoders.
 
-<a href="https://arxiv.org/abs/2104.02699"><img src="https://img.shields.io/badge/arXiv-2104.02699-b31b1b.svg"></a>
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>  
+<a href="https://arxiv.org/abs/2104.02699"><img src="https://img.shields.io/badge/arXiv-2104.02699-b31b1b.svg" height=22.5></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" height=22.5></a>  
+
+<a href="https://www.youtube.com/watch?v=9RzCZZBjlxM"><img src="https://img.shields.io/static/v1?label=Two Minute Papers&message=ReStyle Video&color=red" height=22.5></a>  
+<a href="https://replicate.ai/yuval-alaluf/restyle_encoder"><img src="https://img.shields.io/static/v1?label=Replicate&message=Demo and Docker Image&color=darkgreen" height=22.5></a>
+
 Inference Notebook: <a href="http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>  
 Animation Notebook: <a href="http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/animations_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>  
-
-Two Minute Papers Video: <a href="https://www.youtube.com/watch?v=9RzCZZBjlxM"><img src="https://img.shields.io/badge/-YouTube-red?&style=for-the-badge&logo=youtube&logoColor=white" height=20></a>  
 
 
 <p align="center">
