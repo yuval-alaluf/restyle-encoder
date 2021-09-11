@@ -17,20 +17,24 @@ from scripts import encoder_bootstrapping_inference
 from utils.common import tensor2im
 from utils.inference_utils import run_on_batch
 
-DOMAINS = ["faces", "cars", "churches", "wild_animals", "horses", "toonify"]
+DOMAINS = ["faces", "toonify"]
 
 
 class Predictor(cog.Predictor):
 
     def setup(self):
+        print("Starting setup!")
         self.model_paths = {
             "faces": "pretrained_models/restyle_psp_ffhq_encode.pt",
-            "cars": "pretrained_models/restyle_psp_cars_encode.pt",
-            "churches": "pretrained_models/restyle_psp_church_encode.pt",
-            "wild_animals": "pretrained_models/restyle_psp_afhq_wild_encode.pt",
-            "horses": "pretrained_models/restyle_e4e_horse_encode.pt",
             "toonify": "pretrained_models/restyle_psp_toonify.pt"
         }
+        print("Loading checkpoints...")
+        self.checkpoints = {
+            "faces": torch.load(self.model_paths["faces"], map_location="cpu"),
+            "toonify": torch.load(self.model_paths["toonify"], map_location="cpu")
+        }
+        print("Done!")
+        self.shape_predictor = dlib.shape_predictor("/content/shape_predictor_68_face_landmarks.dat")
         self.default_transforms = transforms.Compose([
                 transforms.Resize((256, 256)),
                 transforms.ToTensor(),
@@ -39,6 +43,7 @@ class Predictor(cog.Predictor):
                 transforms.Resize((192, 256)),
                 transforms.ToTensor(),
                 transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
+        print("Setup complete!")
 
     @cog.input("input", type=Path, help="Path to input image")
     @cog.input("encoding_type",
@@ -64,10 +69,9 @@ class Predictor(cog.Predictor):
     def run_default_encoding(self, input, encoding_type, num_iterations, display_intermediate_results):
         # load model
         print(f'Loading {encoding_type} model...')
-        model_path = self.model_paths[encoding_type]
-        ckpt = torch.load(model_path, map_location="cpu")
+        ckpt = self.checkpoints[encoding_type]
         opts = ckpt['opts']
-        opts['checkpoint_path'] = model_path
+        opts['checkpoint_path'] = self.model_paths[encoding_type]
         opts = Namespace(**opts)
         net = e4e(opts) if encoding_type == "horses" else pSp(opts)
         net.eval()
@@ -118,7 +122,7 @@ class Predictor(cog.Predictor):
     def run_toonify_bootstrapping(self, input, num_iterations, display_intermediate_results):
         # load ffhq model
         print("Loading faces model...")
-        ckpt = torch.load(self.model_paths["faces"], map_location='cpu')
+        ckpt = self.checkpoints["faces"]
         opts = ckpt['opts']
         opts['checkpoint_path'] = self.model_paths["faces"]
         opts = Namespace(**opts)
@@ -129,7 +133,7 @@ class Predictor(cog.Predictor):
 
         # load toonify model
         print("Loading toonify model...")
-        ckpt = torch.load(self.model_paths["toonify"], map_location='cpu')
+        ckpt = self.checkpoints["toonify"]
         opts = ckpt['opts']
         opts['checkpoint_path'] = self.model_paths["toonify"]
         opts = Namespace(**opts)
@@ -174,10 +178,8 @@ class Predictor(cog.Predictor):
         imageio.imwrite(str(out_path), res)
         return out_path
 
-    @staticmethod
-    def run_alignment(image_path):
-        predictor = dlib.shape_predictor("/content/shape_predictor_68_face_landmarks.dat")
-        aligned_image = align_face(filepath=image_path, predictor=predictor)
+    def run_alignment(self, image_path):
+        aligned_image = align_face(filepath=image_path, predictor=self.shape_predictor)
         return aligned_image
 
     @staticmethod

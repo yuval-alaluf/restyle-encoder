@@ -1,3 +1,4 @@
+image: "r8.im/yuval-alaluf/restyle_encoder"
 build:
   gpu: true
   python_version: "3.8"
