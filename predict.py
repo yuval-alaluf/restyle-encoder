@@ -55,11 +55,12 @@ class Predictor(cog.Predictor):
                default=5,
                min=1,
                max=10,
-               help="Number of ReStyle iterations to run. It is highly recommended to run between 3 to 5 iterations.")
+               help="Number of ReStyle iterations to run. "
+                    "For `faces` we recommend 5 iterations and for `toonify` we recommend 1 to 2 iterations.")
     @cog.input("display_intermediate_results",
                type=bool,
-               default=True,
-               help="Whether to display all intermediate outputs. If unchecked, will display only the final inversion.")
+               default=False,
+               help="Whether to display all intermediate outputs. If unchecked, will display only the final result.")
     def predict(self, input, encoding_type, num_iterations, display_intermediate_results):
         if encoding_type == "toonify":
             return self.run_toonify_bootstrapping(input, num_iterations, display_intermediate_results)
@@ -179,7 +180,10 @@ class Predictor(cog.Predictor):
         return out_path
 
     def run_alignment(self, image_path):
-        aligned_image = align_face(filepath=image_path, predictor=self.shape_predictor)
+        try:
+            aligned_image = align_face(filepath=image_path, predictor=self.shape_predictor)
+        except Exception:
+            raise ValueError(f"Oh no! Could not align face! \nPlease try another image!")
         return aligned_image
 
     @staticmethod
