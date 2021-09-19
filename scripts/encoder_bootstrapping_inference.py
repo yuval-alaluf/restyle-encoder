@@ -9,6 +9,8 @@ from PIL import Image
 from torch.utils.data import DataLoader
 import sys
 
+from utils.inference_utils import get_average_image
+
 sys.path.append(".")
 sys.path.append("..")
 
@@ -69,12 +71,7 @@ def run():
         opts.n_images = len(dataset)
 
     # get the image corresponding to the latent average
-    avg_image = net1(net1.latent_avg.unsqueeze(0),
-                    input_code=True,
-                    randomize_noise=False,
-                    return_latents=False,
-                    average_code=True)[0]
-    avg_image = avg_image.to('cuda').float().detach()
+    avg_image = get_average_image(net1, opts)
 
     resize_amount = (256, 256) if opts.resize_outputs else (opts.output_size, opts.output_size)
 

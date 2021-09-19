@@ -279,6 +279,34 @@ python scripts/calc_id_loss_parallel.py \
 
 These scripts will traverse through each sub-directory of `output_path` to compute the metrics on each step's output images.
 
+## Editing
+<p align="center">
+<img src="docs/ardern.jpg" width="800px"/>
+<img src="docs/macron.jpg" width="800px"/>
+<img src="docs/merkel.jpg" width="800px"/>
+<br>
+Editing results using InterFaceGAN on inversions obtained using ReStyle-e4e.
+</p>
+For performing edits using ReStyle-e4e, you can run the script found in `editing/inference_editing.py`, as follows:  
+
+```
+python editing/inference_editing.py \
+--exp_dir=/path/to/experiment \
+--checkpoint_path=/path/to/e4e_ffhq_encoder.pt \
+--data_path=/path/to/test_data \
+--test_batch_size=4 \
+--test_workers=4 \
+--n_iters_per_batch=5 \
+--edit_directions=age,pose,smile \
+--factor_ranges=5,5,5
+```
+
+This script will perform the inversion immediately followed by the latent space edit.  
+The results for each edit will be saved to different sub-directories in the specified experiment directory. For each image, 
+we save the original image followed by the inversion and the resulting edits.  
+We support running inference using ReStyle-e4e models on the faces domain using edit several directions 
+obtained via InterFaceGAN (`age`, `pose`, and `smile`). 
+
 
 ## Encoder Bootstrapping
 <p align="center">

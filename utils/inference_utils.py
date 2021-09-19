@@ -1,6 +1,18 @@
 import torch
 
 
+def get_average_image(net, opts):
+    avg_image = net(net.latent_avg.unsqueeze(0),
+                    input_code=True,
+                    randomize_noise=False,
+                    return_latents=False,
+                    average_code=True)[0]
+    avg_image = avg_image.to('cuda').float().detach()
+    if opts.dataset_type == "cars_encode":
+        avg_image = avg_image[:, 32:224, :]
+    return avg_image
+
+
 def run_on_batch(inputs, net, opts, avg_image):
     y_hat, latent = None, None
     results_batch = {idx: [] for idx in range(inputs.shape[0])}

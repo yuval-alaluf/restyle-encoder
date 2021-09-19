@@ -17,7 +17,7 @@ from models.psp import pSp
 from models.e4e import e4e
 from utils.model_utils import ENCODER_TYPES
 from utils.common import tensor2im
-from utils.inference_utils import run_on_batch
+from utils.inference_utils import run_on_batch, get_average_image
 
 
 def run():
@@ -56,15 +56,7 @@ def run():
         opts.n_images = len(dataset)
 
     # get the image corresponding to the latent average
-    avg_image = net(net.latent_avg.unsqueeze(0),
-                    input_code=True,
-                    randomize_noise=False,
-                    return_latents=False,
-                    average_code=True)[0]
-    avg_image = avg_image.to('cuda').float().detach()
-    if opts.dataset_type == "cars_encode":
-        avg_image = avg_image[:, 32:224, :]
-    tensor2im(avg_image).save(os.path.join(opts.exp_dir, 'avg_image.jpg'))
+    avg_image = get_average_image(net, opts)
 
     if opts.dataset_type == "cars_encode":
         resize_amount = (256, 192) if opts.resize_outputs else (512, 384)

@@ -35,6 +35,12 @@ class TestOptions:
                                  help='Path to encoder used to iteratively translate images following '
                                       'model 1\'s initialization.')
 
+        # arguments for editing
+        self.parser.add_argument('--edit_directions', type=str, default='age,smile,pose',
+                                 help='comma-separated list of which edit directions top perform.')
+        self.parser.add_argument('--factor_ranges', type=str, default='5,5,5',
+                                 help='comma-separated list of max ranges for each corresponding edit.')
+
 
     def parse(self):
         opts = self.parser.parse_args()
