@@ -6,6 +6,7 @@
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" height=22.5></a>  
 
 <a href="https://www.youtube.com/watch?v=9RzCZZBjlxM"><img src="https://img.shields.io/static/v1?label=Two Minute Papers&message=ReStyle Video&color=red" height=22.5></a>  
+<a href="https://youtu.be/6pGzLECSIWM"><img src="https://img.shields.io/static/v1?label=ICCV 2021 &message=5 Minute Video&color=red" height=22.5></a>  
 <a href="https://replicate.ai/yuval-alaluf/restyle_encoder"><img src="https://img.shields.io/static/v1?label=Replicate&message=Demo and Docker Image&color=darkgreen" height=22.5></a>
 
 Inference Notebook: <a href="http://colab.research.google.com/github/yuval-alaluf/restyle-encoder/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=20></a>  
