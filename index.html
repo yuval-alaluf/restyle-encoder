@@ -283,6 +283,22 @@
             letter-spacing:1px;
         }
 
+        .w-embed-youtubevideo {
+            width: 100%;
+            position: relative;
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+            background-image: url(https://d3e54v103j8qbb.cloudfront.net/static/youtube-placeholder.2b05e7d68d.svg);
+            background-size: cover;
+            background-position: 50% 50%
+        }
+
+        .w-embed-youtubevideo:empty {
+            min-height: 75px;
+            padding-bottom: 56.25%
+        }
+
     
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -338,6 +354,16 @@
     
             <br clear="all">
         </div>
+
+        <div class="content" id="video">
+            <h2 style="text-align:center;">Video</h2>
+            <div class="w-embed-youtubevideo stega_movie youtube" id="w-node-e5e45b1d55ac-81500a5f" style="padding-top:56.17021276595745%">
+           <iframe allow="autoplay; encrypted-media" allowfullscreen="" frameBorder="0"
+                   src="https://www.youtube.com/embed/6pGzLECSIWM?rel=1&amp;controls=1&amp;autoplay=0&amp;mute=0&amp;start=0"
+                   style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:auto"></iframe>
+            </div>
+        </div>
+
         <div class="content" id="samples">
     
             <h2 style="text-align:center;">Overview</h2>
