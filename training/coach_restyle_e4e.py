@@ -316,7 +316,7 @@ class Coach:
 			loss_id, sim_improvement, id_logs = self.id_loss(y_hat, y, x)
 			loss_dict['loss_id'] = float(loss_id)
 			loss_dict['id_improve'] = float(sim_improvement)
-			loss = loss_id * self.opts.id_lambda
+			loss += loss_id * self.opts.id_lambda
 		if self.opts.l2_lambda > 0:
 			loss_l2 = F.mse_loss(y_hat, y)
 			loss_dict['loss_l2'] = float(loss_l2)
