@@ -348,7 +348,7 @@ input image on the right.
 ## Repository structure
 | Path | Description <img width=200>
 | :--- | :---
-| SAM | Repository root folder
+| restyle-encoder | Repository root folder
 | &boxvr;&nbsp; configs | Folder containing configs defining model/data paths and data transforms
 | &boxvr;&nbsp; criteria | Folder containing various loss criterias for training
 | &boxvr;&nbsp; datasets | Folder with various dataset objects
