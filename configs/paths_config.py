@@ -29,5 +29,5 @@ model_paths = {
 	'mtcnn_pnet': 'pretrained_models/mtcnn/pnet.npy',
 	'mtcnn_rnet': 'pretrained_models/mtcnn/rnet.npy',
 	'mtcnn_onet': 'pretrained_models/mtcnn/onet.npy',
-	'moco': 'pretrained_models/moco_v2_800ep_pretrain.pth.tar'
+	'moco': 'pretrained_models/moco_v2_800ep_pretrain.pt'
 }
