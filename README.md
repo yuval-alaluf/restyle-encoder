@@ -23,6 +23,31 @@ Different from conventional encoder-based inversion techniques, our residual-bas
 Official Implementation of our ReStyle paper for both training and evaluation. ReStyle introduces an iterative
 refinement mechanism which can be applied over different StyleGAN encoders for solving the StyleGAN inversion task.
 
+## Table of Contents
+  * [Description](#description)
+  * [Getting Started](#getting-started)
+    + [Prerequisites](#prerequisites)
+    + [Installation](#installation)
+  * [Pretrained Models](#pretrained-models)
+    + [ReStyle-pSp](#restyle-psp)
+    + [ReStyle-e4e](#restyle-e4e)
+    + [Auxiliary Models](#auxiliary-models)
+  * [Training](#training)
+    + [Preparing your Data](#preparing-your-data)
+    + [Preparing your Generator](#preparing-your-generator)
+    + [Training ReStyle](#training-restyle)
+      - [Additional Notes](#additional-notes)
+  * [Inference Notebooks](#inference-notebooks)
+  * [Testing](#testing)
+    + [Inference](#inference)
+    + [Step-by-Step Inference](#step-by-step-inference)
+    + [Computing Metrics](#computing-metrics)
+  * [Editing](#editing)
+  * [Encoder Bootstrapping](#encoder-bootstrapping)
+  * [Repository structure](#repository-structure)
+  * [Credits](#credits)
+  * [Acknowledgments](#acknowledgments)
+  * [Citation](#citation)
 
 ## Getting Started
 ### Prerequisites
@@ -42,7 +67,7 @@ across various domains.
 
 Please download the pretrained models from the following links.
 
-### ReStyle + pSp
+### ReStyle-pSp
 | Path | Description
 | :--- | :----------
 |[FFHQ - ReStyle + pSp](https://drive.google.com/file/d/1sw6I2lRIB0MpuJkpc8F5BJiSZrc0hjfE/view?usp=sharing)  | ReStyle applied over pSp trained on the [FFHQ](https://github.com/NVlabs/ffhq-dataset) dataset.
@@ -50,7 +75,7 @@ Please download the pretrained models from the following links.
 |[LSUN Church - ReStyle + pSp](https://drive.google.com/file/d/1bcxx7mw-1z7dzbJI_z7oGpWG1oQAvMaD/view?usp=sharing)  | ReStyle applied over pSp trained on the [LSUN](https://www.yf.io/p/lsun) Church dataset.
 |[AFHQ Wild - ReStyle + pSp](https://drive.google.com/file/d/1GyFXVTNDUw3IIGHmGS71ChhJ1Rmslhk7/view?usp=sharing)  | ReStyle applied over pSp trained on the [AFHQ Wild](https://github.com/clovaai/stargan-v2) dataset.
 
-### ReStyle + e4e
+### ReStyle-e4e
 | Path | Description
 | :--- | :----------
 |[FFHQ - ReStyle + e4e](https://drive.google.com/file/d/1e2oXVeBPXMQoUoC_4TNwAWpOPpSEhE_e/view?usp=sharing)  | ReStyle applied over e4e trained on the [FFHQ](https://github.com/NVlabs/ffhq-dataset) dataset.
@@ -177,7 +202,7 @@ python scripts/train_restyle_e4e.py \
 --stylegan_weights=pretrained_models/stylegan2-ffhq-config-f.pt
 ```
 
-#### Additional Notes:
+#### Additional Notes
 - Encoder backbones:
     - For the human facial domain (`ffhq_encode`), we use an IRSE-50 backbone using the flags:
         - `--encoder_type=BackboneEncoder` for pSp
